@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMINA | Modern E-commerce Experience</title>
+  <meta name="description" content="Discover premium electronics and lifestyle products at Lumina. Clean design, seamless shopping.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo" onclick="showPage('home')">
+        <i class="fas fa-bolt"></i> LUMINA
+      </a>
+      
+      <div class="search-bar">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" placeholder="Search products, brands, and categories...">
+      </div>
+
+      <div class="nav-actions">
+        <a href="#" class="nav-icon" title="Search Mobile Only"><i class="fas fa-search"></i></a>
+        <a href="#" class="nav-icon" title="Wishlist"><i class="far fa-heart"></i></a>
+        <a href="#" class="nav-icon" onclick="showPage('cart')" title="Cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="badge" id="cart-count">0</span>
+        </a>
+        <a href="#" class="nav-icon" title="Profile"><i class="far fa-user"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="app-content">
+    <!-- Home Page -->
+    <section id="home-page" class="page-section">
+      <!-- Hero -->
+      <div class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <span class="hero-badge">Limited Edition Release</span>
+            <h1 class="hero-title">Experience Pure Sound with Lumina Pro</h1>
+            <p class="hero-description">The next generation of noise-canceling technology, designed for comfort and precision. Elevate your listening experience today.</p>
+            <div class="hero-btns">
+              <button class="btn btn-primary" onclick="showPage('shop')">Shop Collection <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+        <img src="assets/hero.png" alt="Hero Product" class="hero-image">
+      </div>
+
+      <!-- Categories -->
+      <div class="container">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="category-grid">
+          <div class="category-card" onclick="showPage('shop')">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800" alt="Electronics">
+            <div class="category-overlay">
+              <h3 class="category-name">Wearables</h3>
+              <p>Smart Tech</p>
+            </div>
+          </div>
+          <div class="category-card" onclick="showPage('shop')">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800" alt="Fashion">
+            <div class="category-overlay">
+              <h3 class="category-name">Lifestyle</h3>
+              <p>Modern Essentials</p>
+            </div>
+          </div>
+          <div class="category-card" onclick="showPage('shop')">
+            <img src="https://images.unsplash.com/photo-1534073828943-f801091bb18c?q=80&w=800" alt="Home">
+            <div class="category-overlay">
+              <h3 class="category-name">Smart Home</h3>
+              <p>Aura Collection</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Products -->
+      <div class="container">
+        <h2 class="section-title">New Arrivals</h2>
+        <div class="product-grid" id="featured-products">
+          <!-- Products will be injected here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop Page -->
+    <section id="shop-page" class="page-section hidden">
+      <div class="container">
+        <div class="shop-header">
+          <h1>Explore All Products</h1>
+          <div class="shop-sort">
+            <label>Sort by:</label>
+            <select>
+              <option>Newest First</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Most Popular</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="shop-layout">
+          <aside class="filters-sidebar">
+            <div class="filter-group">
+              <h4>Categories</h4>
+              <label class="filter-option"><input type="checkbox" checked> Audio (12)</label>
+              <label class="filter-option"><input type="checkbox"> Wearables (8)</label>
+              <label class="filter-option"><input type="checkbox"> Accessories (15)</label>
+              <label class="filter-option"><input type="checkbox"> Smart Home (6)</label>
+            </div>
+            
+            <div class="filter-group">
+              <h4>Price Range</h4>
+              <input type="range" min="0" max="1000" style="width: 100%">
+              <div class="summary-row" style="margin-top: 10px;">
+                <span>$0</span>
+                <span>$1000+</span>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <h4>Brand</h4>
+              <label class="filter-option"><input type="checkbox"> Lumina (22)</label>
+              <label class="filter-option"><input type="checkbox"> Aero (10)</label>
+              <label class="filter-option"><input type="checkbox"> Sonic (5)</label>
+            </div>
+
+            <div class="filter-group">
+              <h4>Rating</h4>
+              <label class="filter-option"><input type="checkbox"> 4 Stars & Up</label>
+              <label class="filter-option"><input type="checkbox"> 3 Stars & Up</label>
+            </div>
+          </aside>
+
+          <div class="product-grid" id="full-product-grid">
+            <!-- Full product list -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Detail Page -->
+    <section id="detail-page" class="page-section hidden">
+      <div class="container">
+        <button class="btn" style="margin-bottom: var(--space-lg);" onclick="showPage('shop')"><i class="fas fa-arrow-left"></i> Back to Shop</button>
+        <div class="product-detail-layout" id="product-detail-content">
+          <!-- Detail content injected here -->
+        </div>
+        
+        <div style="margin-top: 4rem;">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div class="cart-items" style="max-width: 800px; margin: 0 auto;">
+                <div class="cart-item" style="flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <strong>Alex Johnson</strong>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                    <p style="color: var(--text-muted);">The sound quality is absolutely incredible. These are the best headphones I've ever owned. Highly recommend!</p>
+                </div>
+                <div class="cart-item" style="flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <strong>Sarah Miller</strong>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                    </div>
+                    <p style="color: var(--text-muted);">Very comfortable for long periods of time. Noise cancellation works well in the office.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart Page -->
+    <section id="cart-page" class="page-section hidden">
+      <div class="container">
+        <h1 class="section-title">Your Shopping Cart</h1>
+        <div class="cart-layout">
+          <div class="cart-items" id="cart-items-container">
+            <!-- Cart items injected here -->
+          </div>
+          
+          <aside class="cart-summary">
+            <h3>Order Summary</h3>
+            <div style="margin: 1.5rem 0;">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="summary-subtotal">$0.00</span>
+              </div>
+              <div class="summary-row">
+                <span>Shipping</span>
+                <span>FREE</span>
+              </div>
+              <div class="summary-row">
+                <span>Tax</span>
+                <span id="summary-tax">$0.00</span>
+              </div>
+              <div class="summary-row summary-total">
+                <span>Total</span>
+                <span id="summary-total">$0.00</span>
+              </div>
+            </div>
+            <button class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem;" onclick="showPage('checkout')">Proceed to Checkout</button>
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 1rem;">Secure encrypted checkout</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checkout Page -->
+    <section id="checkout-page" class="page-section hidden">
+        <div class="container" style="max-width: 800px;">
+            <h1 class="section-title">Checkout</h1>
+            <div class="cart-items">
+                <form id="checkout-form" onsubmit="handleCheckout(event)">
+                    <h3 style="margin-bottom: 1.5rem;">Shipping Information</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+                        <div class="filter-group">
+                            <label>First Name</label>
+                            <input type="text" class="search-bar" style="margin: 0.5rem 0; width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-md);" required>
+                        </div>
+                        <div class="filter-group">
+                            <label>Last Name</label>
+                            <input type="text" style="margin: 0.5rem 0; width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-md);" required>
+                        </div>
+                        <div class="filter-group" style="grid-column: span 2;">
+                            <label>Address</label>
+                            <input type="text" style="margin: 0.5rem 0; width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-md);" required>
+                        </div>
+                        <div class="filter-group">
+                            <label>City</label>
+                            <input type="text" style="margin: 0.5rem 0; width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-md);" required>
+                        </div>
+                        <div class="filter-group">
+                            <label>Postal Code</label>
+                            <input type="text" style="margin: 0.5rem 0; width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-md);" required>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-bottom: 1.5rem;">Payment Method</h3>
+                    <div class="filter-group" style="margin-bottom: 2rem;">
+                        <label class="filter-option" style="padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 0.5rem;">
+                            <input type="radio" name="payment" checked> Credit Card (Visa/Mastercard)
+                        </label>
+                        <label class="filter-option" style="padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius-md);">
+                            <input type="radio" name="payment"> PayPal
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem;">Complete Order <i class="fas fa-lock"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Page -->
+    <section id="confirmation-page" class="page-section hidden">
+        <div class="container text-center" style="max-width: 600px; padding-top: 4rem;">
+            <div style="font-size: 5rem; color: #22c55e; margin-bottom: 2rem;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1 style="margin-bottom: 1rem;">Thank you for your order!</h1>
+            <p style="color: var(--text-muted); font-size: 1.25rem; margin-bottom: 2rem;">Your order #LUM-82937 has been placed successfully. We'll send you a confirmation email shortly.</p>
+            <div class="cart-items" style="text-align: left; margin-bottom: 2rem;">
+                <div class="summary-row">
+                    <span>Order Date:</span>
+                    <strong>March 29, 2026</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Estimated Delivery:</span>
+                    <strong>April 2, 2026</strong>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="showPage('home')">Continue Shopping</button>
+        </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <a href="#" class="logo" style="color: #fff; margin-bottom: 1.5rem;">
+          <i class="fas fa-bolt"></i> LUMINA
+        </a>
+        <p>Your destination for premium electronics and lifestyle essentials. Quality products, minimalist design, and exceptional service.</p>
+        <div class="nav-actions" style="justify-content: flex-start; margin-top: 1.5rem;">
+          <a href="#" class="nav-icon" style="color: #fff;"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="nav-icon" style="color: #fff;"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="nav-icon" style="color: #fff;"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Electronics</a></li>
+          <li><a href="#">Wearables</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">New Arrivals</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>&copy; 2026 LUMINA E-commerce. All rights reserved.</p>
+      <div style="display: flex; gap: 2rem;">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
